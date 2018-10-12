@@ -51,7 +51,7 @@
                         "version": "latest"
                     },
         "osType": "Windows",
-        "FDiskSize":"[int(parameters('FDiskSizestr'))]",
+        "FDiskSize":"80",
         "domaintojoin": "vmsrg.local",
         "domainJoinUserName":"sysadmin@vmsrg.local",
         "webserverimageid": {"id": "[concat('/subscriptions/','c379e217-ffc5-4b22-8b96-9fb6b29f46fa','/resourceGroups/','I9VMs','/providers/Microsoft.Compute/images/WebSrvrImage-master')]"},

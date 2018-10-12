@@ -76,12 +76,12 @@
 "PublicIPRequired" : {"value": "parameters('PublicIPRequired')[copyIndex(childtemplatecopy,0)]"},
 "publicIpAddressType": {"value": "parameters('publicIpAddressType')"},
 "publicIpAddressSku": {"value": "parameters('publicIpAddressSku')"},
-"PrivateIP" : {"value": "parameters('PrivateIP')[copyIndex(childtemplatecopy,0)]"},
+"PrivateIP" : {"value": "parameters('PrivateIP')[copyIndex(childtemplatecopy,0)"},
                 
 
 "isIM94Machine" : {"value": "parameters('isIM94Machine')[copyIndex(childtemplatecopy,0)]"},
 "FDiskAccountType" : {"value": "parameters('FDiskAccountType')[copyIndex(childtemplatecopy,0)]"},
-"FDiskSize" : {"value": "(parameters('FDiskSize')[copyIndex(childtemplatecopy,0)])"},
+"FDiskSizeStr" : {"value": "parameters('FDiskSize')[copyIndex(childtemplatecopy,0)]"},
 "FDiskCreateOption" : {"value": "parameters('FDiskCreateOption')[copyIndex(childtemplatecopy,0)]"},
               
 
