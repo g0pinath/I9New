@@ -81,7 +81,7 @@
 
 "isIM94Machine" : {"value": "parameters('isIM94Machine')[copyIndex(childtemplatecopy,0)]"},
 "FDiskAccountType" : {"value": "parameters('FDiskAccountType')[copyIndex(childtemplatecopy,0)]"},
-"FDiskSize" : {"value": "parameters('FDiskSize')[copyIndex(childtemplatecopy,0)]"},
+"FDiskSize" : {"value": "(parameters('FDiskSize')[copyIndex(childtemplatecopy,0)])"},
 "FDiskCreateOption" : {"value": "parameters('FDiskCreateOption')[copyIndex(childtemplatecopy,0)]"},
               
 

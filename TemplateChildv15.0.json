@@ -22,7 +22,7 @@
         "PrivateIP": {"type": "string"},
         "isIM94Machine":{"type": "string"},
         "FDiskAccountType": {"type": "string"}, 
-        "FDiskSize": {"type": "int"},
+        "FDiskSizestr": {"type": "string"},
         "FDiskCreateOption": {"type": "string"}, 
         "storageAccountName": {"type": "string"},
         "diagnosticsStorageAccountName": {"type": "string"},
@@ -51,6 +51,7 @@
                         "version": "latest"
                     },
         "osType": "Windows",
+        "FDiskSize":"[int(parameters('FDiskSizestr'))]",
         "domaintojoin": "vmsrg.local",
         "domainJoinUserName":"sysadmin@vmsrg.local",
         "webserverimageid": {"id": "[concat('/subscriptions/','c379e217-ffc5-4b22-8b96-9fb6b29f46fa','/resourceGroups/','I9VMs','/providers/Microsoft.Compute/images/WebSrvrImage-master')]"},
@@ -59,7 +60,7 @@
                          "lun": "0",
                          "name": "[variables('FDiskName')]",
                         "createOption": "attach",
-                        "diskSizeGB": "[parameters('FDiskSize')]",
+                        "diskSizeGB": "[variables('FDiskSize')]",
                         "managedDisk": {
                         "id": "[resourceId('I9VMs','Microsoft.Compute/disks', variables('FDiskName'))]",
                         "storageAccountType": "Standard_LRS"
@@ -106,7 +107,7 @@
                         "storageAccountType": "standard_LRS"
                         }
                         },
-                        "dataDisks": "[if(equals(parameters('FDiskSize'), 'NA'), json('null'), variables('FdiskProperties'))]"
+                        "dataDisks": "[if(equals(variables('FDiskSize'), 'NA'), json('null'), variables('FdiskProperties'))]"
                     
                 },
                 "networkProfile": {
@@ -215,7 +216,7 @@
             }
         },
         {
-             "condition": "[not(equals(parameters('FDiskSize'), 'NA'))]",
+             "condition": "[not(equals(variables('FDiskSize'), 'NA'))]",
              "apiVersion": "2018-04-01",
              "tags": {
              "Realogy-ResourceName": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskName'), variables('FDiskname'))]"             
@@ -231,7 +232,7 @@
                             "sourceResourceId": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskSourceURI'), json('null'))]"
 
                             },
-                            "diskSizeGB": "[parameters('FDiskSize')]"
+                            "diskSizeGB": "[variables('FDiskSize')]"
                            },
             "sku": {
                 "name": "[parameters('FDiskaccountType')]"
