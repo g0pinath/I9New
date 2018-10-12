@@ -11,12 +11,10 @@
         "osOffer": {"type": "string"},
         "osSKU": {"type": "string"},
         "osType": {"type": "string"},
-        "subnetName": {"type": "string"},
-        
+        "subnetName": {"type": "string"},        
         "adminUsername": {"type": "string"},
         "localadminPassword": {"type": "securestring"},
-        "domainPassword": {"type": "securestring"},
-        
+        "domainPassword": {"type": "securestring"},        
         "P7Pair": {"type": "string"},
         "PublicIPRequired":{"type": "string"},
         "publicIpAddressType": {"type": "string"},
