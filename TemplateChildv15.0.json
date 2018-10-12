@@ -249,7 +249,7 @@
              },
             "type": "Microsoft.Network/publicIpAddresses",
             "apiVersion": "2017-08-01",
-            "location": "[parameters('location')]",
+            "location": "parameters('location')",
             "properties": {
                 "publicIpAllocationMethod": "[parameters('publicIpAddressType')]",
                 "dnssettings": {
