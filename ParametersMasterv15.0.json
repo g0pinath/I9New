@@ -12,7 +12,6 @@
         "osSKU": {"value": "2016-Datacenter"},
         "osType": {"value": "Windows"},
         "subnetName": {"value": "I9Subnet-94"},
-        
         "adminUsername": {"value": "Sysadmin"},        
         "domainPassword": {
             "reference": {
@@ -31,22 +30,15 @@
               "secretName": "vmlocalPassword"
             }
         },
-        
         "P7Pair": {"value": "NA"},
         "PublicIPRequired": {"value": "False"},
         "publicIpAddressType": {"value": "Dynamic"},
         "publicIpAddressSku":  {"value": "Basic"},
         "PrivateIP": {"value": "False"},       
-
         "isIM94Machine": {"value": "False"},
         "FDiskAccountType": {"value": "Standard_LRS"}, 
         "FDiskSize": {"value": "80"},
         "FDiskCreateOption": {"value": "Empty"}, 
-        "GDiskSize": {"value": "80"},
-        
-        "GDiskAccountType": {"value": "Standard_LRS"},
-       
-       
         "storageAccountName": {"value": "saoct62018"},
         "diagnosticsStorageAccountName": {"value": "vmsdiagsasep122018"},
         "diagnosticsStorageAccountType": {"value": "Standard_LRS"},

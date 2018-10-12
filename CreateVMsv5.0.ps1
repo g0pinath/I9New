@@ -58,7 +58,7 @@ $osOffer+=$row.osOffer
 $osSKU+=$row.osSKU
 $osType+=$row.osType
 $subnetName+=$row.subnetName
-$ResourceGroupName+=$row.ResourceGroupName
+
 $P7Pair+=$row.P7Pair
 $PublicIPRequired+=$row.PublicIPRequired
 $PrivateIP+=$row.PrivateIP
@@ -67,9 +67,9 @@ $FDiskAccountType+=$row.FDiskAccountType
 $FDiskSize+=$row.FDiskSize
 $FDiskCreateOption+=$row.FDiskCreateOption
 
-$GDiskSize+=$row.GDiskSize
+#$GDiskSize+=$row.GDiskSize
 #$GDiskCreateOption+=$row.GDiskCreateOption
-$GDiskAccountType+=$row.GDiskAccountType
+#$GDiskAccountType+=$row.GDiskAccountType
 $networkSecurityGroupName+=$row.networkSecurityGroupName
 [string]$IM4FdiskSource=""
 $IM4FdiskSource= $row.P7Pair+"-FDisk"
@@ -87,7 +87,7 @@ $serverParam.parameters.osOffer.value=$osOffer
 $serverParam.parameters.osSKU.value=$osSKU
 $serverParam.parameters.osType.value=$osType
 $serverParam.parameters.subnetName.value=$subnetName
-$serverParam.parameters.ResourceGroupName.value=$ResourceGroupName
+
 $serverParam.parameters.P7Pair.value=$P7Pair
 $serverParam.parameters.PublicIPRequired.value=$PublicIPRequired
 $serverParam.parameters.PrivateIP.value=$PrivateIP
@@ -97,9 +97,9 @@ $serverParam.parameters.FDiskAccountType.value=$FDiskAccountType
 $serverParam.parameters.FDiskSize.value=$FDiskSize
 $serverParam.parameters.FDiskCreateOption.value=$FDiskCreateOption
 
-$serverParam.parameters.GDiskSize.value=$GDiskSize
+#$serverParam.parameters.GDiskSize.value=$GDiskSize
 #$serverParam.parameters.GDiskCreateOption.value=$GDiskCreateOption
-$serverParam.parameters.GDiskAccountType.value=$GDiskAccountType
+#$serverParam.parameters.GDiskAccountType.value=$GDiskAccountType
 $serverParam.parameters.networkSecurityGroupName.value=$networkSecurityGroupName
 ######################
 

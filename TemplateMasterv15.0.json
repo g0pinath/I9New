@@ -13,26 +13,18 @@
         "osSKU": {"type": "array"},
         "osType": {"type": "array"},
         "subnetName": {"type": "array"},
-        
         "adminUsername": {"type": "string"},
         "domainPassword": {"type": "securestring"},
         "localadminPassword": {"type": "securestring"},
-        
         "P7Pair": {"type": "array"},
         "PublicIPRequired":{"type": "array"},
         "publicIpAddressType": {"type": "string"},
         "publicIpAddressSku":  {"type": "string"},
         "PrivateIP": {"type": "array"},
-        "isIM94Machine": {"type": "array"},
-        
+        "isIM94Machine": {"type": "array"},        
         "FDiskAccountType": {"type": "array"}, 
         "FDiskSize": {"type": "array"},
         "FDiskCreateOption": {"type": "array"}, 
-        
-        "GDiskSize": {"type": "array"},
-        
-        "GDiskAccountType": {"type": "array"}, 
-
         "storageAccountName": {"type": "string"},
         "diagnosticsStorageAccountName": {"type": "string"},
         "diagnosticsStorageAccountType": {"type": "string"},
@@ -92,9 +84,7 @@
 "FDiskSize" : {"value": "parameters('FDiskSize')[copyIndex(childtemplatecopy,0)]"},
 "FDiskCreateOption" : {"value": "parameters('FDiskCreateOption')[copyIndex(childtemplatecopy,0)]"},
               
-"GDiskSize" : {"value": "parameters('GDiskSize')[copyIndex(childtemplatecopy,0)]",
 
-"GDiskAccountType" : {"value": "parameters('GDiskAccountType')[copyIndex(childtemplatecopy,0)]"},
            
 "storageAccountName": {"value": "parameters('storageAccountName')"},
 "diagnosticsStorageAccountName": {"value": "parameters('diagnosticsStorageAccountName')"},

@@ -24,8 +24,6 @@
         "FDiskAccountType": {"type": "string"}, 
         "FDiskSize": {"type": "string"},
         "FDiskCreateOption": {"type": "string"}, 
-        "GDiskSize": {"type": "string"},        
-        "GDiskAccountType": {"type": "string"},
         "storageAccountName": {"type": "string"},
         "diagnosticsStorageAccountName": {"type": "string"},
         "diagnosticsStorageAccountId": {"type": "string"},
@@ -41,12 +39,7 @@
         "IM94FDiskName": "[concat(parameters('virtualMachineName'), '-FDisk')]",
         "FDiskName": "[concat(parameters('virtualMachineName'), '-FDisk')]",
         "OSDiskName": "[concat(parameters('virtualMachineName'), '-OSDisk')]",
-        "GDiskName": "[concat(parameters('virtualMachineName'), '-GDisk')]",
-        "IM94GDiskName": "[concat(parameters('virtualMachineName'), '-GDisk')]",
         "PublicIPAddressName": "[concat(parameters('virtualMachineName'), '-PublicIP')]",
-        
-        
-        
         "IM94FDiskSourceURI": "[concat('/subscriptions/', 'c379e217-ffc5-4b22-8b96-9fb6b29f46fa','/resourceGroups/','I9VMs','/providers/Microsoft.Compute/disks/', variables('IM94FDiskSource'))]",
         "PublicIPaddressID":{
                                "id": "[resourceId('I9VMs','Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"

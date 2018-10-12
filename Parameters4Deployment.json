@@ -142,20 +142,6 @@
         "Empty"
       ]
     },
-    "GDiskSize": {
-      "value": [
-        "NA",
-        "NA",
-        "NA"
-      ]
-    },
-    "GDiskAccountType": {
-      "value": [
-        "Standard_LRS",
-        "Standard_LRS",
-        "Standard_LRS"
-      ]
-    },
     "storageAccountName": {
       "value": "saoct62018"
     },
