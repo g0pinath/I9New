@@ -224,7 +224,7 @@
              "name": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskName'), variables('FDiskname'))]",
              "location": "eastus2",
              "Properties": {
-                        "osType": "[variables('osType')]",
+                        "osType": "variables('osType')",
                         "creationData": {
                             "createOption": "[if(equals(parameters('isIM94Machine'), 'True'), 'Copy', 'empty')]",
                             

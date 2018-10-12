@@ -51,13 +51,6 @@
         "2016-Datacenter"
       ]
     },
-    "osType": {
-      "value": [
-        "Windows",
-        "Windows",
-        "Windows"
-      ]
-    },
     "subnetName": {
       "value": [
         "TRGP7Subnet-79",
