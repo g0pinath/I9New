@@ -64,8 +64,8 @@
                     "contentVersion": "1.0.0.0"
                 }
             },
-                "parameters":{ 
-"location": {"value": "[parameters('location')]"},
+                "parameters": { 
+"location": {"value": "parameters('location')"},
 "virtualMachineName" : {"value": "parameters('virtualMachineName')[copyIndex(childtemplatecopy,0)]"},
 "virtualMachineSize" : {"value": "parameters('virtualMachineSize')[copyIndex(childtemplatecopy,0)]"},
 "virtualNetworkName" : {"value": "parameters('virtualNetworkName')[copyIndex(childtemplatecopy,0)]"},

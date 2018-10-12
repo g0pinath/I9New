@@ -1,0 +1,51 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        
+        "location": {"type": "string"},
+        "virtualMachineName": {"type": "string"},
+        "virtualNetworkName": {"type": "string"},
+        "subnetName": {"type": "string"},
+        "PrivateIP": {"type": "string"},
+        "networkSecurityGroupName": {"type": "string"}
+        
+    },
+    "variables": {
+       
+       "count": "[length(parameters('virtualMachineName'))]"
+      
+    },
+    "resources": [
+         {
+            "apiVersion": "2017-05-10",
+             "name": "[concat('linkedTemplate', copyIndex())]",
+            "type": "Microsoft.Resources/deployments",
+            "copy": {
+                    "Name":"childtemplatecopy",
+                    "Count": "[variables('count')]"
+                    },
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('VMTemplateURI')]",
+                    "contentVersion": "1.0.0.0"
+                }
+            },
+                "parameters": { 
+                "location": {"value": "parameters('location')"},
+                "virtualMachineName" : {"value": "parameters('virtualMachineName')"},
+                "subnetName" : {"value": "parameters('subnetName')"},
+                "PrivateIP" : {"value": "parameters('PrivateIP')"},
+                "networkSecurityGroupName" : {"value": "parameters('networkSecurityGroupName')"}
+                }
+            }
+        }
+     ],
+    "outputs": {
+        "adminUsername": {
+            "type": "string",
+            "value": "[parameters('adminUsername')]"
+        }
+    }
+}

@@ -1,0 +1,53 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {"type": "string"},
+        "virtualMachineName": {"type": "string"},
+        "virtualNetworkName": {"type": "string"},
+        "subnetName": {"type": "string"},
+        "PrivateIP": {"type": "string"},
+        "networkSecurityGroupName": {"type": "string"}
+        
+            },
+    "variables": {
+        "vnetId": "[resourceId('I9VMs','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+        "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-Team')]"
+        
+            },
+    "resources": [
+        
+        {
+            "name": "[variables('networkInterfaceName')]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2018-04-01",
+            "location": "[parameters('location')]",
+                      
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            },
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "[parameters('PrivateIP')]"
+                                                                                    
+                        }
+                    }
+                ],
+                "networkSecurityGroup": {
+                    "id": "[resourceId('I9VMs', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+                }
+            }
+        }
+
+        
+    ],
+    "outputs": {
+        
+        }
+    
+}
