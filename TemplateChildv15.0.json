@@ -16,7 +16,7 @@
         "adminUsername": {"type": "string"},
         "localadminPassword": {"type": "securestring"},
         "domainPassword": {"type": "securestring"},
-        "domainJoinOptions": {"type": "int"},
+        
         "P7Pair": {"type": "string"},
         "PublicIPRequired":{"type": "string"},
         "publicIpAddressType": {"type": "string"},
@@ -47,6 +47,7 @@
         "GDiskName": "[concat(parameters('virtualMachineName'), '-GDisk')]",
         "IM94GDiskName": "[concat(parameters('virtualMachineName'), '-GDisk')]",
         "PublicIPAddressName": "[concat(parameters('virtualMachineName'), '-PublicIP')]",
+        "domainJoinOptions": "3"
         
         
         "IM94FDiskSourceURI": "[concat('/subscriptions/', 'c379e217-ffc5-4b22-8b96-9fb6b29f46fa','/resourceGroups/','I9VMs','/providers/Microsoft.Compute/disks/', variables('IM94FDiskSource'))]",
@@ -152,7 +153,7 @@
                       "Name": "[variables('domaintojoin')]",
                       "User": "[variables('domainJoinUserName')]",
                       "Restart": "true",
-                      "Options": "[parameters('domainJoinOptions')]"
+                      "Options": "[variables('domainJoinOptions')]"
                     },
                     "protectedSettings": {
                       "Password": "[parameters('domainPassword')]"

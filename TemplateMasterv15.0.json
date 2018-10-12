@@ -17,7 +17,7 @@
         "adminUsername": {"type": "string"},
         "domainPassword": {"type": "securestring"},
         "localadminPassword": {"type": "securestring"},
-        "domainJoinOptions": {"type": "int"},
+        
         "P7Pair": {"type": "array"},
         "PublicIPRequired":{"type": "array"},
         "publicIpAddressType": {"type": "string"},
@@ -62,9 +62,8 @@
                 "templateLink": {
                     "uri": "[variables('VMTemplateURI')]",
                     "contentVersion": "1.0.0.0"
-                }
-            },
-                "parameters": { 
+                },
+                 "parameters": { 
 "location": {"value": "parameters('location')"},
 "virtualMachineName" : {"value": "parameters('virtualMachineName')[copyIndex(childtemplatecopy,0)]"},
 "virtualMachineSize" : {"value": "parameters('virtualMachineSize')[copyIndex(childtemplatecopy,0)]"},
@@ -79,7 +78,7 @@
 "adminUsername": {"value": "parameters('adminusername')"},
 "localadminPassword": {"value": "parameters('localadminPassword')"},
 "domainPassword": {"value": "parameters('domainPassword')"},
-"domainJoinOptions": {"value": "parameters('domainJoinOptions')"},
+
                 
 "P7Pair" : {"value": "parameters('P7Pair')[copyIndex(childtemplatecopy,0)]"},
 "PublicIPRequired" : {"value": "parameters('PublicIPRequired')[copyIndex(childtemplatecopy,0)]"},
@@ -105,6 +104,8 @@
 "networkSecurityGroupName" : {"value": "parameters('networkSecurityGroupName')[copyIndex(childtemplatecopy,0)]"}
                 
                 }
+            }
+               
             }
         }
      ],

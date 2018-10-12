@@ -2,7 +2,6 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        
         "location": {"type": "string"},
         "virtualMachineName": {"type": "string"},
         "virtualNetworkName": {"type": "string"},
@@ -13,18 +12,16 @@
     },
     "variables": {
        
-       "count": "[length(parameters('virtualMachineName'))]"
+       "count": "[length(parameters('virtualMachineName'))]",
+       "VMTemplateURI": "https://raw.githubusercontent.com/g0pinath/I9New/master/TestTemplateChild.Json"
       
     },
     "resources": [
          {
             "apiVersion": "2017-05-10",
-             "name": "[concat('linkedTemplate', copyIndex())]",
+             "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
-            "copy": {
-                    "Name":"childtemplatecopy",
-                    "Count": "[variables('count')]"
-                    },
+            
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -40,12 +37,9 @@
                 "networkSecurityGroupName" : {"value": "parameters('networkSecurityGroupName')"}
                 }
             }
-        }
+        
      ],
     "outputs": {
-        "adminUsername": {
-            "type": "string",
-            "value": "[parameters('adminUsername')]"
-        }
+        
     }
 }

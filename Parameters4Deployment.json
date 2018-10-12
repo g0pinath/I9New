@@ -87,9 +87,6 @@
         "secretName": "vmlocalPassword"
       }
     },
-    "domainJoinOptions": {
-      "value": 3
-    },
     "P7Pair": {
       "value": [
         "NA",

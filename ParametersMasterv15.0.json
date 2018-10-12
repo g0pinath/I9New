@@ -31,7 +31,7 @@
               "secretName": "vmlocalPassword"
             }
         },
-        "domainJoinOptions": {"value": 3},
+        
         "P7Pair": {"value": "NA"},
         "PublicIPRequired": {"value": "False"},
         "publicIpAddressType": {"value": "Dynamic"},

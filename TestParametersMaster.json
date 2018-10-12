@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {"value": "eastus2"},
-        "virtualMachineName": {"value": ["Test1"},
+        "virtualMachineName": {"value": "Test1"},
         "virtualNetworkName": {"value": "VMsVnet"},
         "subnetName": {"value": "I9Subnet-94"},
         "PrivateIP": {"value": "False"},       
