@@ -57,41 +57,41 @@
                 },
                  "parameters": { 
 
-"virtualMachineName" : {"value": "'parameters('virtualMachineName')[copyIndex(childtemplatecopy,0)]'"},
-"virtualMachineSize" : {"value": "parameters('virtualMachineSize')[copyIndex(childtemplatecopy,0)]"},
-"virtualNetworkName" : {"value": "parameters('virtualNetworkName')[copyIndex(childtemplatecopy,0)]"},
-"vmimagetype" : {"value": "parameters('vmimagetype')[copyIndex(childtemplatecopy,0)]"},
-"osPublisher" : {"value": "parameters('osPublisher')[copyIndex(childtemplatecopy,0)]"},
-"osOffer" : {"value": "parameters('osOffer')[copyIndex(childtemplatecopy,0)]"},
-"osSKU" : {"value": "parameters('osSKU')[copyIndex(childtemplatecopy,0)]"},
+"virtualMachineName" : {"value": parameters('virtualMachineName')[copyIndex(childtemplatecopy,0)]},
+"virtualMachineSize" : {"value": parameters('virtualMachineSize')[copyIndex(childtemplatecopy,0)]},
+"virtualNetworkName" : {"value": parameters('virtualNetworkName')[copyIndex(childtemplatecopy,0)]},
+"vmimagetype" : {"value": parameters('vmimagetype')[copyIndex(childtemplatecopy,0)]},
+"osPublisher" : {"value": parameters('osPublisher')[copyIndex(childtemplatecopy,0)]},
+"osOffer" : {"value": parameters('osOffer')[copyIndex(childtemplatecopy,0)]},
+"osSKU" : {"value": parameters('osSKU')[copyIndex(childtemplatecopy,0)]},
 
-"subnetName" : {"value": "parameters('subnetName')[copyIndex(childtemplatecopy,0)]"},
+"subnetName" : {"value": parameters('subnetName')[copyIndex(childtemplatecopy,0)]},
 
-"adminUsername": {"value": "parameters('adminusername')"},
-"localadminPassword": {"value": "parameters('localadminPassword')"},
-"domainPassword": {"value": "parameters('domainPassword')"},
+"adminUsername": {"value": parameters('adminusername')},
+"localadminPassword": {"value": parameters('localadminPassword')},
+"domainPassword": {"value": parameters('domainPassword')"},
 
                 
-"P7Pair" : {"value": "parameters('P7Pair')[copyIndex(childtemplatecopy,0)]"},
-"PublicIPRequired" : {"value": "parameters('PublicIPRequired')[copyIndex(childtemplatecopy,0)]"},
-"publicIpAddressType": {"value": "parameters('publicIpAddressType')"},
-"publicIpAddressSku": {"value": "parameters('publicIpAddressSku')"},
-"PrivateIP" : {"value": "parameters('PrivateIP')[copyIndex(childtemplatecopy,0)"},
+"P7Pair" : {"value": parameters('P7Pair')[copyIndex(childtemplatecopy,0)]},
+"PublicIPRequired" : {"value": parameters('PublicIPRequired')[copyIndex(childtemplatecopy,0)]},
+"publicIpAddressType": {"value": parameters('publicIpAddressType')},
+"publicIpAddressSku": {"value": parameters('publicIpAddressSku')},
+"PrivateIP" : {"value": parameters('PrivateIP')[copyIndex(childtemplatecopy,0)]},
                 
 
-"isIM94Machine" : {"value": "parameters('isIM94Machine')[copyIndex(childtemplatecopy,0)]"},
-"FDiskAccountType" : {"value": "parameters('FDiskAccountType')[copyIndex(childtemplatecopy,0)]"},
-"FDiskSizeStr" : {"value": "parameters('FDiskSize')[copyIndex(childtemplatecopy,0)]"},
-"FDiskCreateOption" : {"value": "parameters('FDiskCreateOption')[copyIndex(childtemplatecopy,0)]"},
+"isIM94Machine" : {"value": parameters('isIM94Machine')[copyIndex(childtemplatecopy,0)]},
+"FDiskAccountType" : {"value": parameters('FDiskAccountType')[copyIndex(childtemplatecopy,0)]},
+"FDiskSizeStr" : {"value": parameters('FDiskSize')[copyIndex(childtemplatecopy,0)]},
+"FDiskCreateOption" : {"value": parameters('FDiskCreateOption')[copyIndex(childtemplatecopy,0)]},
               
 
            
-"storageAccountName": {"value": "parameters('storageAccountName')"},
-"diagnosticsStorageAccountName": {"value": "parameters('diagnosticsStorageAccountName')"},
-"diagnosticsStorageAccountType": {"value": "parameters('diagnosticsStorageAccountType')"},
-"diagnosticsStorageAccountKind": {"value": "parameters('diagnosticsStorageAccountKind')"},
-"diagnosticsStorageAccountId": {"value": "parameters('diagnosticsStorageAccountId')"},
-"networkSecurityGroupName" : {"value": "parameters('networkSecurityGroupName')[copyIndex(childtemplatecopy,0)]"}
+"storageAccountName": {"value": parameters('storageAccountName')},
+"diagnosticsStorageAccountName": {"value": parameters('diagnosticsStorageAccountName')},
+"diagnosticsStorageAccountType": {"value": parameters('diagnosticsStorageAccountType')},
+"diagnosticsStorageAccountKind": {"value": parameters('diagnosticsStorageAccountKind')},
+"diagnosticsStorageAccountId": {"value": parameters('diagnosticsStorageAccountId')},
+"networkSecurityGroupName" : {"value": parameters('networkSecurityGroupName')[copyIndex(childtemplatecopy,0)]}
                 
                 }
             }
