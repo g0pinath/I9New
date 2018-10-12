@@ -202,7 +202,7 @@
                             },
                             "privateIPAllocationMethod": "Static",
                             "privateIPAddress": "[parameters('PrivateIP')]",
-                            "publicIPAddress": "[if(equals(parameters('isPublicIPRequired'), 'True'), variables('PublicIPaddressId'),  json('null'))]"
+                            "publicIPAddress": "[if(equals(parameters('PublicIPRequired'), 'True'), variables('PublicIPaddressId'),  json('null'))]"
                             
                             
                         }
