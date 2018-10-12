@@ -11,7 +11,7 @@
         "osPublisher": {"type": "array"},
         "osOffer": {"type": "array"},
         "osSKU": {"type": "array"},
-        "osType": {"type": "array"},
+        
         "subnetName": {"type": "array"},
         "adminUsername": {"type": "string"},
         "domainPassword": {"type": "securestring"},
@@ -64,7 +64,7 @@
 "osPublisher" : {"value": "parameters('osPublisher')[copyIndex(childtemplatecopy,0)]"},
 "osOffer" : {"value": "parameters('osOffer')[copyIndex(childtemplatecopy,0)]"},
 "osSKU" : {"value": "parameters('osSKU')[copyIndex(childtemplatecopy,0)]"},
-"osType" : {"value": "parameters('osType')[copyIndex(childtemplatecopy,0)]"},
+
 "subnetName" : {"value": "parameters('subnetName')[copyIndex(childtemplatecopy,0)]"},
 
 "adminUsername": {"value": "parameters('adminusername')"},

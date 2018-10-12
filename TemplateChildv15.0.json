@@ -10,7 +10,7 @@
         "osPublisher": {"type": "string"},
         "osOffer": {"type": "string"},
         "osSKU": {"type": "string"},
-        "osType": {"type": "enum"},
+        
         "subnetName": {"type": "string"},        
         "adminUsername": {"type": "string"},
         "localadminPassword": {"type": "securestring"},
@@ -50,6 +50,7 @@
                         "sku": "2016-Datacenter",
                         "version": "latest"
                     },
+        "osType": "Windows"
         "domaintojoin": "vmsrg.local",
         "domainJoinUserName":"sysadmin@vmsrg.local",
         "webserverimageid": {"id": "[concat('/subscriptions/','c379e217-ffc5-4b22-8b96-9fb6b29f46fa','/resourceGroups/','I9VMs','/providers/Microsoft.Compute/images/WebSrvrImage-master')]"},
@@ -223,7 +224,7 @@
              "name": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskName'), variables('FDiskname'))]",
              "location": "eastus2",
              "Properties": {
-                        "osType": "[parameters('osType')]",
+                        "osType": "[variables('osType')]",
                         "creationData": {
                             "createOption": "[if(equals(parameters('isIM94Machine'), 'True'), 'Copy', 'empty')]",
                             
