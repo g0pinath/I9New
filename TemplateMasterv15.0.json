@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         
-        "location": {"type": "string"},
+        
         "virtualMachineName": {"type": "array"},
         "virtualMachineSize": {"type": "array"},
         "virtualNetworkName": {"type": "array"},

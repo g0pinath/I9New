@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "location": {"value": "eastus2"},
+        
         "virtualMachineName": {"value": ["Test","test1"]},
         "virtualMachineSize": {"value": ["Standard_B1ms","Standard_B1ms"]},
         "virtualNetworkName": {"value": "VMsVnet"},

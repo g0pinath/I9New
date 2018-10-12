@@ -77,7 +77,7 @@
             "location": "eastus2",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]",
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]",
+              
                 "[concat('Microsoft.Compute/disks/', variables('IM94FDiskName'))]",
                 "[concat('Microsoft.Compute/disks/', variables('FDiskName'))]"
 
