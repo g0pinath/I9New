@@ -28,8 +28,8 @@ $parametersCSV = IMport-csv "C:\Temp\I9\ServerParameters.csv"
 #$KeyvaultID=(Get-AzureRmKeyVault -ResourceGroup TRGVMsRG | Select ResourceID).ResourceID
 #Variables
 $virtualMachineName=@();$i=0;$vmImageType=@();$osPublisher=@();$osOffer=@();$osSKU=@();$osType=@();$virtualMachineSize=@() #VM resource
-$P7PairArr=@();$IM94FDiskSourceArr=@();#Future for I9 project.
-$PrivateIP=@();$publicIpAddressName=@();$isPublicIPRequired=@();$subnetName=@();$virtualNetworkName=@();$networkSecurityGroupName=@(); #NIC resource
+$P7Pair=@();$IM94FDiskSourceArr=@();#Future for I9 project.
+$PrivateIP=@();$publicIpAddressName=@();$PublicIPRequired=@();$subnetName=@();$virtualNetworkName=@();$networkSecurityGroupName=@(); #NIC resource
 $FDiskAccountType=@();$FDiskCreateOption=@();$FDiskSize=@();$isIM94Machine=@(); #Fdisk resource
 $GDiskAccountType=@();$GDiskCreateOption=@();$GDiskSize=@(); #GDiskresource
 $networkSecurityGroupName=@();$ResourceGroupName=@()     

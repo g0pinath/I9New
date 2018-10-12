@@ -68,13 +68,6 @@
         "TRGP7Subnet-79"
       ]
     },
-    "ResourceGroupName": {
-      "value": [
-        "IM94VMs",
-        "IM94VMs",
-        "IM94VMs"
-      ]
-    },
     "adminUsername": {
       "value": "Sysadmin"
     },
@@ -95,13 +88,21 @@
       }
     },
     "domainJoinOptions": {
-      "value": "3"
+      "value": 3
     },
     "P7Pair": {
-      "value": "NANANA"
+      "value": [
+        "NA",
+        "NA",
+        "NA"
+      ]
     },
     "PublicIPRequired": {
-      "value": "FALSEFALSEFALSE"
+      "value": [
+        "FALSE",
+        "FALSE",
+        "FALSE"
+      ]
     },
     "publicIpAddressType": {
       "value": "Dynamic"

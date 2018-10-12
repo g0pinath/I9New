@@ -8,12 +8,12 @@
         "virtualMachineSize": {"type": "array"},
         "virtualNetworkName": {"type": "array"},
         "vmimagetype": {"type": "array"},
-        "osPublisher": {"type": "string"},
-        "osOffer": {"type": "string"},
-        "osSKU": {"type": "string"},
+        "osPublisher": {"type": "array"},
+        "osOffer": {"type": "array"},
+        "osSKU": {"type": "array"},
         "osType": {"type": "array"},
         "subnetName": {"type": "array"},
-        "ResourceGroupName": {"type": "array"},
+        
         "adminUsername": {"type": "string"},
         "domainPassword": {"type": "securestring"},
         "localadminPassword": {"type": "securestring"},
@@ -43,15 +43,15 @@
     },
     "variables": {
        
-        
+        "count": "[length(parameters('virtualMachineName'))]",
         "subscriptionId": "[subscription().subscriptionId]",
-       "VMTemplateURI": "C:\Temp\I9\TemplateChildv15.0.json"
+       "VMTemplateURI": "https://raw.githubusercontent.com/g0pinath/I9New/master/TemplateChildv15.0.json"
        
     },
     "resources": [
          {
             "apiVersion": "2017-05-10",
-             "name": "linkedTemplate",
+             "name": "[concat('linkedTemplate', copyIndex())]",
             "type": "Microsoft.Resources/deployments",
             "copy": {
                     "Name":"childtemplatecopy",
@@ -62,46 +62,47 @@
                 "templateLink": {
                     "uri": "[variables('VMTemplateURI')]",
                     "contentVersion": "1.0.0.0"
-                },
+                }
+            },
                 "parameters":{ 
-"location": "parameters('location')",
-"virtualMachineName" : "parameters('virtualMachineName')[copyIndex(childtemplatecopy,0)]",
-"virtualMachineSize" : "parameters('virtualMachineSize')[copyIndex(childtemplatecopy,0)]",
-"virtualNetworkName" : "parameters('virtualNetworkName')[copyIndex(childtemplatecopy,0)]",
-"vmimagetype" : "parameters('vmimagetype')[copyIndex(childtemplatecopy,0)]",
-"osPublisher" : "parameters('osPublisher')[copyIndex(childtemplatecopy,0)]",
-"osOffer" : "parameters('osOffer')[copyIndex(childtemplatecopy,0)]",
-"osSKU" : "parameters('osSKU')[copyIndex(childtemplatecopy,0)]",
-"osType" : "parameters('osType')[copyIndex(childtemplatecopy,0)]",
-"subnetName" : "parameters('subnetName')[copyIndex(childtemplatecopy,0)]",
+"location": {"value": "[parameters('location')]"},
+"virtualMachineName" : {"value": "parameters('virtualMachineName')[copyIndex(childtemplatecopy,0)]"},
+"virtualMachineSize" : {"value": "parameters('virtualMachineSize')[copyIndex(childtemplatecopy,0)]"},
+"virtualNetworkName" : {"value": "parameters('virtualNetworkName')[copyIndex(childtemplatecopy,0)]"},
+"vmimagetype" : {"value": "parameters('vmimagetype')[copyIndex(childtemplatecopy,0)]"},
+"osPublisher" : {"value": "parameters('osPublisher')[copyIndex(childtemplatecopy,0)]"},
+"osOffer" : {"value": "parameters('osOffer')[copyIndex(childtemplatecopy,0)]"},
+"osSKU" : {"value": "parameters('osSKU')[copyIndex(childtemplatecopy,0)]"},
+"osType" : {"value": "parameters('osType')[copyIndex(childtemplatecopy,0)]"},
+"subnetName" : {"value": "parameters('subnetName')[copyIndex(childtemplatecopy,0)]"},
 
-"adminUsername": "parameters('adminusername')",
-"localadminPassword": "parameters('localadminPassword')",
-"domainPassword": "parameters('domainPassword')",
-"domainJoinOptions": {"type": "int"},
+"adminUsername": {"value": "parameters('adminusername')"},
+"localadminPassword": {"value": "parameters('localadminPassword')"},
+"domainPassword": {"value": "parameters('domainPassword')"},
+"domainJoinOptions": {"value": "parameters('domainJoinOptions')"},
                 
-"P7Pair" : "parameters('P7Pair')[copyIndex(childtemplatecopy,0)]",
-"PublicIPRequired" : "parameters('PublicIPRequired')[copyIndex(childtemplatecopy,0)]",
-"publicIpAddressType": "parameters('publicIpAddressType')",
-"publicIpAddressSku": "parameters('publicIpAddressSku')",
-"PrivateIP" : "parameters('PrivateIP')[copyIndex(childtemplatecopy,0)]",
+"P7Pair" : {"value": "parameters('P7Pair')[copyIndex(childtemplatecopy,0)]"},
+"PublicIPRequired" : {"value": "parameters('PublicIPRequired')[copyIndex(childtemplatecopy,0)]"},
+"publicIpAddressType": {"value": "parameters('publicIpAddressType')"},
+"publicIpAddressSku": {"value": "parameters('publicIpAddressSku')"},
+"PrivateIP" : {"value": "parameters('PrivateIP')[copyIndex(childtemplatecopy,0)]"},
                 
 
-"isIM94Machine" : "parameters('isIM94Machine')[copyIndex(childtemplatecopy,0)]",
-"FDiskAccountType" : "parameters('FDiskAccountType')[copyIndex(childtemplatecopy,0)]",
-"FDiskSize" : "parameters('FDiskSize')[copyIndex(childtemplatecopy,0)]",
-"FDiskCreateOption" : "parameters('FDiskCreateOption')[copyIndex(childtemplatecopy,0)]",
+"isIM94Machine" : {"value": "parameters('isIM94Machine')[copyIndex(childtemplatecopy,0)]"},
+"FDiskAccountType" : {"value": "parameters('FDiskAccountType')[copyIndex(childtemplatecopy,0)]"},
+"FDiskSize" : {"value": "parameters('FDiskSize')[copyIndex(childtemplatecopy,0)]"},
+"FDiskCreateOption" : {"value": "parameters('FDiskCreateOption')[copyIndex(childtemplatecopy,0)]"},
               
-"GDiskSize" : "parameters('GDiskSize')[copyIndex(childtemplatecopy,0)]",
-"GDiskCreateOption" : "parameters('GDiskCreateOption')[copyIndex(childtemplatecopy,0)]",
-"GDiskAccountType" : "parameters('GDiskAccountType')[copyIndex(childtemplatecopy,0)]",
+"GDiskSize" : {"value": "parameters('GDiskSize')[copyIndex(childtemplatecopy,0)]",
+"GDiskCreateOption" : {"value": "parameters('GDiskCreateOption')[copyIndex(childtemplatecopy,0)]"},
+"GDiskAccountType" : {"value": "parameters('GDiskAccountType')[copyIndex(childtemplatecopy,0)]"},
            
-"storageAccountName": "parameters('storageAccountName')",
-"diagnosticsStorageAccountName": "parameters('diagnosticsStorageAccountName')",
-"diagnosticsStorageAccountType": "parameters('diagnosticsStorageAccountType')",
-"diagnosticsStorageAccountKind": "parameters('diagnosticsStorageAccountKind')",
-"diagnosticsStorageAccountId": "parameters('diagnosticsStorageAccountId')",
-"networkSecurityGroupName" : "parameters('networkSecurityGroupName')[copyIndex(childtemplatecopy,0)]"
+"storageAccountName": {"value": "parameters('storageAccountName')"},
+"diagnosticsStorageAccountName": {"value": "parameters('diagnosticsStorageAccountName')"},
+"diagnosticsStorageAccountType": {"value": "parameters('diagnosticsStorageAccountType')"},
+"diagnosticsStorageAccountKind": {"value": "parameters('diagnosticsStorageAccountKind')"},
+"diagnosticsStorageAccountId": {"value": "parameters('diagnosticsStorageAccountId')"},
+"networkSecurityGroupName" : {"value": "parameters('networkSecurityGroupName')[copyIndex(childtemplatecopy,0)]"}
                 
                 }
             }
