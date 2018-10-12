@@ -57,7 +57,7 @@
                 },
                  "parameters": { 
 
-"virtualMachineName" : {"value": "parameters('virtualMachineName')[copyIndex(childtemplatecopy,0)]"},
+"virtualMachineName" : {"value": "'parameters('virtualMachineName')[copyIndex(childtemplatecopy,0)]'"},
 "virtualMachineSize" : {"value": "parameters('virtualMachineSize')[copyIndex(childtemplatecopy,0)]"},
 "virtualNetworkName" : {"value": "parameters('virtualNetworkName')[copyIndex(childtemplatecopy,0)]"},
 "vmimagetype" : {"value": "parameters('vmimagetype')[copyIndex(childtemplatecopy,0)]"},
