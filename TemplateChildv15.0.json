@@ -261,8 +261,7 @@
                 "name": "[parameters('publicIpAddressSku')]"
             }
         }
-
-        
+                
     ],
     "outputs": {
         "adminUsername": {
