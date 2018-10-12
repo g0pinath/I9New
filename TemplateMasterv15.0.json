@@ -1,0 +1,116 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        
+        "location": {"type": "string"},
+        "virtualMachineName": {"type": "array"},
+        "virtualMachineSize": {"type": "array"},
+        "virtualNetworkName": {"type": "array"},
+        "vmimagetype": {"type": "array"},
+        "osPublisher": {"type": "string"},
+        "osOffer": {"type": "string"},
+        "osSKU": {"type": "string"},
+        "osType": {"type": "array"},
+        "subnetName": {"type": "array"},
+        "ResourceGroupName": {"type": "array"},
+        "adminUsername": {"type": "string"},
+        "domainPassword": {"type": "securestring"},
+        "localadminPassword": {"type": "securestring"},
+        "domainJoinOptions": {"type": "int"},
+        "P7Pair": {"type": "array"},
+        "PublicIPRequired":{"type": "array"},
+        "publicIpAddressType": {"type": "string"},
+        "publicIpAddressSku":  {"type": "string"},
+        "PrivateIP": {"type": "array"},
+        "isIM94Machine": {"type": "array"},
+        
+        "FDiskAccountType": {"type": "array"}, 
+        "FDiskSize": {"type": "array"},
+        "FDiskCreateOption": {"type": "array"}, 
+        
+        "GDiskSize": {"type": "array"},
+        "GDiskCreateOption": {"type": "array"}, 
+        "GDiskAccountType": {"type": "array"}, 
+
+        "storageAccountName": {"type": "string"},
+        "diagnosticsStorageAccountName": {"type": "string"},
+        "diagnosticsStorageAccountType": {"type": "string"},
+        "diagnosticsStorageAccountKind": {"type": "string"},
+        "diagnosticsStorageAccountId": {"type": "string"},
+        "networkSecurityGroupName": {"type": "array"}
+        
+    },
+    "variables": {
+       
+        
+        "subscriptionId": "[subscription().subscriptionId]",
+       "VMTemplateURI": "C:\Temp\I9\TemplateChildv15.0.json"
+       
+    },
+    "resources": [
+         {
+            "apiVersion": "2017-05-10",
+             "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "copy": {
+                    "Name":"childtemplatecopy",
+                    "Count": "[variables('count')]"
+                    },
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('VMTemplateURI')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters":{ 
+"location": "parameters('location')",
+"virtualMachineName" : "parameters('virtualMachineName')[copyIndex(childtemplatecopy,0)]",
+"virtualMachineSize" : "parameters('virtualMachineSize')[copyIndex(childtemplatecopy,0)]",
+"virtualNetworkName" : "parameters('virtualNetworkName')[copyIndex(childtemplatecopy,0)]",
+"vmimagetype" : "parameters('vmimagetype')[copyIndex(childtemplatecopy,0)]",
+"osPublisher" : "parameters('osPublisher')[copyIndex(childtemplatecopy,0)]",
+"osOffer" : "parameters('osOffer')[copyIndex(childtemplatecopy,0)]",
+"osSKU" : "parameters('osSKU')[copyIndex(childtemplatecopy,0)]",
+"osType" : "parameters('osType')[copyIndex(childtemplatecopy,0)]",
+"subnetName" : "parameters('subnetName')[copyIndex(childtemplatecopy,0)]",
+
+"adminUsername": "parameters('adminusername')",
+"localadminPassword": "parameters('localadminPassword')",
+"domainPassword": "parameters('domainPassword')",
+"domainJoinOptions": {"type": "int"},
+                
+"P7Pair" : "parameters('P7Pair')[copyIndex(childtemplatecopy,0)]",
+"PublicIPRequired" : "parameters('PublicIPRequired')[copyIndex(childtemplatecopy,0)]",
+"publicIpAddressType": "parameters('publicIpAddressType')",
+"publicIpAddressSku": "parameters('publicIpAddressSku')",
+"PrivateIP" : "parameters('PrivateIP')[copyIndex(childtemplatecopy,0)]",
+                
+
+"isIM94Machine" : "parameters('isIM94Machine')[copyIndex(childtemplatecopy,0)]",
+"FDiskAccountType" : "parameters('FDiskAccountType')[copyIndex(childtemplatecopy,0)]",
+"FDiskSize" : "parameters('FDiskSize')[copyIndex(childtemplatecopy,0)]",
+"FDiskCreateOption" : "parameters('FDiskCreateOption')[copyIndex(childtemplatecopy,0)]",
+              
+"GDiskSize" : "parameters('GDiskSize')[copyIndex(childtemplatecopy,0)]",
+"GDiskCreateOption" : "parameters('GDiskCreateOption')[copyIndex(childtemplatecopy,0)]",
+"GDiskAccountType" : "parameters('GDiskAccountType')[copyIndex(childtemplatecopy,0)]",
+           
+"storageAccountName": "parameters('storageAccountName')",
+"diagnosticsStorageAccountName": "parameters('diagnosticsStorageAccountName')",
+"diagnosticsStorageAccountType": "parameters('diagnosticsStorageAccountType')",
+"diagnosticsStorageAccountKind": "parameters('diagnosticsStorageAccountKind')",
+"diagnosticsStorageAccountId": "parameters('diagnosticsStorageAccountId')",
+"networkSecurityGroupName" : "parameters('networkSecurityGroupName')[copyIndex(childtemplatecopy,0)]"
+                
+                }
+            }
+        }
+     ],
+    "outputs": {
+        "adminUsername": {
+            "type": "string",
+            "value": "[parameters('adminUsername')]"
+        }
+    }
+}

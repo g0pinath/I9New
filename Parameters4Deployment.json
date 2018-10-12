@@ -1,0 +1,191 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastus2"
+    },
+    "virtualMachineName": {
+      "value": [
+        "TestWeb01",
+        "TestWeb02",
+        "TestWeb03"
+      ]
+    },
+    "virtualMachineSize": {
+      "value": [
+        "Standard_B2s",
+        "Standard_B2s",
+        "Standard_B2s"
+      ]
+    },
+    "virtualNetworkName": {
+      "value": [
+        "VMSVNet",
+        "VMSVNet",
+        "VMSVNet"
+      ]
+    },
+    "vmimagetype": {
+      "value": [
+        "AzureStore",
+        "AzureStore",
+        "AzureStore"
+      ]
+    },
+    "osPublisher": {
+      "value": [
+        "MicrosoftWindowsServer",
+        "MicrosoftWindowsServer",
+        "MicrosoftWindowsServer"
+      ]
+    },
+    "osOffer": {
+      "value": [
+        "WindowsServer",
+        "WindowsServer",
+        "WindowsServer"
+      ]
+    },
+    "osSKU": {
+      "value": [
+        "2016-Datacenter",
+        "2016-Datacenter",
+        "2016-Datacenter"
+      ]
+    },
+    "osType": {
+      "value": [
+        "Windows",
+        "Windows",
+        "Windows"
+      ]
+    },
+    "subnetName": {
+      "value": [
+        "TRGP7Subnet-79",
+        "TRGP7Subnet-79",
+        "TRGP7Subnet-79"
+      ]
+    },
+    "ResourceGroupName": {
+      "value": [
+        "IM94VMs",
+        "IM94VMs",
+        "IM94VMs"
+      ]
+    },
+    "adminUsername": {
+      "value": "Sysadmin"
+    },
+    "domainPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/c379e217-ffc5-4b22-8b96-9fb6b29f46fa/resourceGroups/TRGVMsRG/providers/Microsoft.KeyVault/vaults/TRGVMsRGvault1"
+        },
+        "secretName": "domainPassword"
+      }
+    },
+    "localadminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/c379e217-ffc5-4b22-8b96-9fb6b29f46fa/resourceGroups/TRGVMsRG/providers/Microsoft.KeyVault/vaults/TRGVMsRGvault1"
+        },
+        "secretName": "vmlocalPassword"
+      }
+    },
+    "domainJoinOptions": {
+      "value": "3"
+    },
+    "P7Pair": {
+      "value": "NANANA"
+    },
+    "PublicIPRequired": {
+      "value": "FALSEFALSEFALSE"
+    },
+    "publicIpAddressType": {
+      "value": "Dynamic"
+    },
+    "publicIpAddressSku": {
+      "value": "Basic"
+    },
+    "PrivateIP": {
+      "value": [
+        "10.79.1.7",
+        "10.79.1.8",
+        "10.79.1.9"
+      ]
+    },
+    "isIM94Machine": {
+      "value": [
+        "FALSE",
+        "FALSE",
+        "FALSE"
+      ]
+    },
+    "FDiskAccountType": {
+      "value": [
+        "Standard_LRS",
+        "Standard_LRS",
+        "Standard_LRS"
+      ]
+    },
+    "FDiskSize": {
+      "value": [
+        "NA",
+        "NA",
+        "NA"
+      ]
+    },
+    "FDiskCreateOption": {
+      "value": [
+        "Empty",
+        "Empty",
+        "Empty"
+      ]
+    },
+    "GDiskSize": {
+      "value": [
+        "NA",
+        "NA",
+        "NA"
+      ]
+    },
+    "GDiskCreateOption": {
+      "value": [
+        "Empty",
+        "Empty",
+        "Empty"
+      ]
+    },
+    "GDiskAccountType": {
+      "value": [
+        "Standard_LRS",
+        "Standard_LRS",
+        "Standard_LRS"
+      ]
+    },
+    "storageAccountName": {
+      "value": "saoct62018"
+    },
+    "diagnosticsStorageAccountName": {
+      "value": "vmsdiagsasep122018"
+    },
+    "diagnosticsStorageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "diagnosticsStorageAccountKind": {
+      "value": "Storage"
+    },
+    "diagnosticsStorageAccountId": {
+      "value": "/subscriptions/c379e217-ffc5-4b22-8b96-9fb6b29f46fa/resourceGroups/trgvmsrg/providers/Microsoft.Storage/storageAccounts/vmsdiagsasep122018"
+    },
+    "networkSecurityGroupName": {
+      "value": [
+        "VMsNSG",
+        "VMsNSG",
+        "VMsNSG"
+      ]
+    }
+  }
+}
