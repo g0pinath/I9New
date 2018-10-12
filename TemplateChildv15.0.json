@@ -50,7 +50,7 @@
                         "sku": "2016-Datacenter",
                         "version": "latest"
                     },
-        "osType": "Windows"
+        "osType": "Windows",
         "domaintojoin": "vmsrg.local",
         "domainJoinUserName":"sysadmin@vmsrg.local",
         "webserverimageid": {"id": "[concat('/subscriptions/','c379e217-ffc5-4b22-8b96-9fb6b29f46fa','/resourceGroups/','I9VMs','/providers/Microsoft.Compute/images/WebSrvrImage-master')]"},
