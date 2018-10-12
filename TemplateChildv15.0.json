@@ -152,8 +152,8 @@
                     "settings": {
                       "Name": "[variables('domaintojoin')]",
                       "User": "[variables('domainJoinUserName')]",
-                      "Restart": "true",
-                      "Options": "3"
+                      "Restart": "true"
+                      
                     },
                     "protectedSettings": {
                       "Password": "[parameters('domainPassword')]"
