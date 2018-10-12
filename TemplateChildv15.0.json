@@ -2,7 +2,7 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "location": {"type": "string"},
+        
         "virtualMachineName": {"type": "string"},
         "virtualMachineSize": {"type": "string"},
         "virtualNetworkName": {"type": "string"},
@@ -74,7 +74,7 @@
              },
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2017-12-01",
-            "location": "parameters('location')",
+            "location": "eastus2",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]",
                 "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]",
@@ -130,7 +130,7 @@
                   "apiVersion": "2015-06-15",
                   "type": "extensions",
                   "name": "[concat(parameters('virtualMachineName'),'-DJExtn')]",
-                  "location": "parameters('location')",
+                  "location": "eastus2",
                   "dependsOn": [
                     "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
                   ],
@@ -154,7 +154,7 @@
                     "apiVersion": "2015-06-15",
                     "type": "extensions",
                     "name": "config-app",
-                    "location": "parameters('location')",
+                    "location": "eastus2",
                    "dependsOn": [
                               "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
                         ],
@@ -189,7 +189,7 @@
                           },
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2018-04-01",
-            "location": "parameters('location')",
+            "location": "eastus2",
             "dependsOn": [
                         "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
                         "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"                        
@@ -223,7 +223,7 @@
              },
              "type": "Microsoft.Compute/disks",           
              "name": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskName'), variables('FDiskname'))]",
-             "location": "parameters('location')",
+             "location": "eastus2",
              "Properties": {
                         "osType": "[parameters('osType')]",
                         "creationData": {
@@ -249,7 +249,7 @@
              },
             "type": "Microsoft.Network/publicIpAddresses",
             "apiVersion": "2017-08-01",
-            "location": "parameters('location')",
+            "location": "eastus2",
             "properties": {
                 "publicIpAllocationMethod": "[parameters('publicIpAddressType')]",
                 "dnssettings": {
