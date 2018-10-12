@@ -58,7 +58,7 @@
                          "lun": "0",
                          "name": "[variables('FDiskName')]",
                         "createOption": "attach",
-                        "diskSizeGB": "[parameters('FDiskSizeinGB')]",
+                        "diskSizeGB": "[parameters('FDiskSize')]",
                         "managedDisk": {
                         "id": "[resourceId('I9VMs','Microsoft.Compute/disks', variables('FDiskName'))]",
                         "storageAccountType": "Standard_LRS"
@@ -106,7 +106,7 @@
                         "storageAccountType": "standard_LRS"
                         }
                         },
-                        "dataDisks": "[if(equals(parameters('FDiskSizeinGB'), 'NA'), json('null'), variables('FdiskProperties'))]"
+                        "dataDisks": "[if(equals(parameters('FDiskSize'), 'NA'), json('null'), variables('FdiskProperties'))]"
                     
                 },
                 "networkProfile": {
@@ -232,7 +232,7 @@
                             "sourceResourceId": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskSourceURI'), json('null'))]"
 
                             },
-                            "diskSizeGB": "[parameters('FDiskSizeinGB')]"
+                            "diskSizeGB": "[parameters('FDiskSize')]"
                                               
             },
             "sku": {
