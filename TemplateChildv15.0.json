@@ -27,7 +27,7 @@
         "FDiskSize": {"type": "string"},
         "FDiskCreateOption": {"type": "string"}, 
         "GDiskSize": {"type": "string"},
-        "GDiskCreateOption": {"type": "string"},
+        
         "GDiskAccountType": {"type": "string"},
         "storageAccountName": {"type": "string"},
         "diagnosticsStorageAccountName": {"type": "string"},

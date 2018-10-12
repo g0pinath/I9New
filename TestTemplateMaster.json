@@ -27,9 +27,8 @@
                 "templateLink": {
                     "uri": "[variables('VMTemplateURI')]",
                     "contentVersion": "1.0.0.0"
-                }
-            },
-                "parameters": { 
+                },
+                   "parameters": { 
                 "location": {"value": "parameters('location')"},
                 "virtualMachineName" : {"value": "parameters('virtualMachineName')"},
                 "subnetName" : {"value": "parameters('subnetName')"},
@@ -37,6 +36,9 @@
                 "networkSecurityGroupName" : {"value": "parameters('networkSecurityGroupName')"}
                 }
             }
+            }
+             
+           
         
      ],
     "outputs": {

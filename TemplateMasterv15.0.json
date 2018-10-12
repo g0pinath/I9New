@@ -30,7 +30,7 @@
         "FDiskCreateOption": {"type": "array"}, 
         
         "GDiskSize": {"type": "array"},
-        "GDiskCreateOption": {"type": "array"}, 
+        
         "GDiskAccountType": {"type": "array"}, 
 
         "storageAccountName": {"type": "string"},
@@ -93,7 +93,7 @@
 "FDiskCreateOption" : {"value": "parameters('FDiskCreateOption')[copyIndex(childtemplatecopy,0)]"},
               
 "GDiskSize" : {"value": "parameters('GDiskSize')[copyIndex(childtemplatecopy,0)]",
-"GDiskCreateOption" : {"value": "parameters('GDiskCreateOption')[copyIndex(childtemplatecopy,0)]"},
+
 "GDiskAccountType" : {"value": "parameters('GDiskAccountType')[copyIndex(childtemplatecopy,0)]"},
            
 "storageAccountName": {"value": "parameters('storageAccountName')"},

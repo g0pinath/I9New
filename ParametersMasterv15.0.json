@@ -43,7 +43,7 @@
         "FDiskSize": {"value": "80"},
         "FDiskCreateOption": {"value": "Empty"}, 
         "GDiskSize": {"value": "80"},
-        "GDiskCreateOption": {"value": "Empty"},
+        
         "GDiskAccountType": {"value": "Standard_LRS"},
        
        

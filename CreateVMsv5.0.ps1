@@ -68,7 +68,7 @@ $FDiskSize+=$row.FDiskSize
 $FDiskCreateOption+=$row.FDiskCreateOption
 
 $GDiskSize+=$row.GDiskSize
-$GDiskCreateOption+=$row.GDiskCreateOption
+#$GDiskCreateOption+=$row.GDiskCreateOption
 $GDiskAccountType+=$row.GDiskAccountType
 $networkSecurityGroupName+=$row.networkSecurityGroupName
 [string]$IM4FdiskSource=""
@@ -98,7 +98,7 @@ $serverParam.parameters.FDiskSize.value=$FDiskSize
 $serverParam.parameters.FDiskCreateOption.value=$FDiskCreateOption
 
 $serverParam.parameters.GDiskSize.value=$GDiskSize
-$serverParam.parameters.GDiskCreateOption.value=$GDiskCreateOption
+#$serverParam.parameters.GDiskCreateOption.value=$GDiskCreateOption
 $serverParam.parameters.GDiskAccountType.value=$GDiskAccountType
 $serverParam.parameters.networkSecurityGroupName.value=$networkSecurityGroupName
 ######################

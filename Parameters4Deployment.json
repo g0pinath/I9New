@@ -149,13 +149,6 @@
         "NA"
       ]
     },
-    "GDiskCreateOption": {
-      "value": [
-        "Empty",
-        "Empty",
-        "Empty"
-      ]
-    },
     "GDiskAccountType": {
       "value": [
         "Standard_LRS",
