@@ -44,6 +44,6 @@
         "diagnosticsStorageAccountType": {"value": "Standard_LRS"},
         "diagnosticsStorageAccountKind": {"value": "Storage"},
         "diagnosticsStorageAccountId": {"value": "/subscriptions/c379e217-ffc5-4b22-8b96-9fb6b29f46fa/resourceGroups/trgvmsrg/providers/Microsoft.Storage/storageAccounts/vmsdiagsasep122018"},
-        "networkSecurityGroupName": {            "value": "VMsNSG"        }
+        "networkSecurityGroupName": {            "value": "TRGVMsNSG"        }
     }
 }
