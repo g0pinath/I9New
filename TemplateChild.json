@@ -22,7 +22,6 @@
         "publicIpAddressSku": {"type": "string"},
         "PrivateIP": {"type": "string"},
         "isIM94Machine":{"type": "string"},
-        "FDiskAccountType": {"type": "string"}, 
         "FDiskSizestr": {"type": "string"},
         "FDiskCreateOption": {"type": "string"}, 
         "storageAccountName": {"type": "string"},
@@ -41,7 +40,7 @@
         "FDiskName": "[concat(parameters('virtualMachineName'), '-FDisk')]",
         "OSDiskName": "[concat(parameters('virtualMachineName'), '-OSDisk')]",
         "PublicIPAddressName": "[concat(parameters('virtualMachineName'), '-PublicIP')]",
-        "IM94FDiskSourceURI": "[concat('/subscriptions/', '79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/','parameters('RGName')','/providers/Microsoft.Compute/disks/', variables('IM94FDiskSource'))]",
+        "IM94FDiskSourceURI": "[concat('/subscriptions/', '79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/',parameters('RGName'),'/providers/Microsoft.Compute/disks/', variables('IM94FDiskSource'))]",
         "PublicIPaddressID":{
                                "id": "[resourceId(parameters('RGName'),'Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"
                             },
@@ -55,7 +54,7 @@
         "FDiskSize":"80",
         "domaintojoin": "vmsrg.local",
         "domainJoinUserName":"sysadmin@vmsrg.local",
-        "webserverimageid": {"id": "[concat('/subscriptions/','79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/','parameters('RGName')','/providers/Microsoft.Compute/images/WebSrvrImage-master')]"},
+        "webserverimageid": {"id": "[concat('/subscriptions/','79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/',parameters('RGName'),'/providers/Microsoft.Compute/images/WebSrvrImage-master')]"},
         "FdiskProperties": [
                           {
                          "lun": "0",
