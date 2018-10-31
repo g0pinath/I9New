@@ -22,6 +22,7 @@
         "publicIpAddressSku": {"type": "string"},
         "PrivateIP": {"type": "string"},
         "isIM94Machine":{"type": "string"},
+        "FDiskAccountType": {"type": "string"}, 
         "FDiskSizestr": {"type": "string"},
         "FDiskCreateOption": {"type": "string"}, 
         "storageAccountName": {"type": "string"},
