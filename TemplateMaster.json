@@ -66,6 +66,7 @@
 "osPublisher" : {"value": "[parameters('osPublisher')[copyIndex()]]"},
 "osOffer" : {"value": "[parameters('osOffer')[copyIndex()]]"},
 "osSKU" : {"value": "[parameters('osSKU')[copyIndex()]]"},
+"osType" : {"value": "[parameters('osType')[copyIndex()]]"},
 
 "subnetName" : {"value": "[parameters('subnetName')[copyIndex()]]"},
 

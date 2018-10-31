@@ -51,7 +51,7 @@
                         "sku": "2016-Datacenter",
                         "version": "latest"
                     },
-        "osType": "Windows",
+        
         "FDiskSize":"80",
         "domaintojoin": "vmsrg.local",
         "domainJoinUserName":"sysadmin@vmsrg.local",
@@ -226,7 +226,7 @@
              "name": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskName'), variables('FDiskname'))]",
              "location": "eastus2",
              "Properties": {
-                        "osType": "[variables('osType')]",
+                        "osType": "[parameters('osType')]",
                         "creationData": {
                             "createOption": "[if(equals(parameters('isIM94Machine'), 'True'), 'Copy', 'empty')]",
                             
