@@ -10,9 +10,10 @@
         "osPublisher": {"value": "MicrosoftWindowsServer"},
         "osOffer": {"value": "WindowsServer"},
         "osSKU": {"value": "2016-Datacenter"},
+        "osType": {"value": "Windows"},
         
         "subnetName": {"value": "I9Subnet-94"},
-        "resourceGroupName": {"value": "RG-TRG01-LAB01-SCUS-ICL"},
+        "RGName": {"value": "RG-TRG01-LAB01-SCUS-ICL"},
         "adminUsername": {"value": "Sysadmin"},        
         "domainPassword": {"value":"Staging@1234"
         },

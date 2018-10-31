@@ -10,11 +10,11 @@
         "osPublisher": {"type": "string"},
         "osOffer": {"type": "string"},
         "osSKU": {"type": "string"},
-        
+        "osType": {"type": "string"},        
         "subnetName": {"type": "string"},        
         "adminUsername": {"type": "string"},
         "localadminPassword": {"type": "string"},
-        "resourceGroupName": {"type": "string"},
+        "RGName": {"type": "string"},
         "domainPassword": {"type": "string"},        
         "P7Pair": {"type": "string"},
         "PublicIPRequired":{"type": "string"},
@@ -33,7 +33,7 @@
         "networkSecurityGroupName": {"type": "string"}
             },
     "variables": {
-        "vnetId": "[resourceId('parameters('resourceGroupName')','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "vnetId": "[resourceId('parameters('RGName')','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
         "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-Team')]",
         "IM94FDiskSource": "[concat(parameters('P7Pair'), '-FDisk')]",
@@ -41,9 +41,9 @@
         "FDiskName": "[concat(parameters('virtualMachineName'), '-FDisk')]",
         "OSDiskName": "[concat(parameters('virtualMachineName'), '-OSDisk')]",
         "PublicIPAddressName": "[concat(parameters('virtualMachineName'), '-PublicIP')]",
-        "IM94FDiskSourceURI": "[concat('/subscriptions/', '79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/','parameters('resourceGroupName')','/providers/Microsoft.Compute/disks/', variables('IM94FDiskSource'))]",
+        "IM94FDiskSourceURI": "[concat('/subscriptions/', '79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/','parameters('RGName')','/providers/Microsoft.Compute/disks/', variables('IM94FDiskSource'))]",
         "PublicIPaddressID":{
-                               "id": "[resourceId('parameters('resourceGroupName')','Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"
+                               "id": "[resourceId('parameters('RGName')','Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"
                             },
         "azurestoreimageReference": {
                         "publisher": "MicrosoftWindowsServer",
@@ -55,7 +55,7 @@
         "FDiskSize":"80",
         "domaintojoin": "vmsrg.local",
         "domainJoinUserName":"sysadmin@vmsrg.local",
-        "webserverimageid": {"id": "[concat('/subscriptions/','79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/','parameters('resourceGroupName')','/providers/Microsoft.Compute/images/WebSrvrImage-master')]"},
+        "webserverimageid": {"id": "[concat('/subscriptions/','79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/','parameters('RGName')','/providers/Microsoft.Compute/images/WebSrvrImage-master')]"},
         "FdiskProperties": [
                           {
                          "lun": "0",
@@ -63,7 +63,7 @@
                         "createOption": "attach",
                         "diskSizeGB": "[variables('FDiskSize')]",
                         "managedDisk": {
-                        "id": "[resourceId('parameters('resourceGroupName')','Microsoft.Compute/disks', variables('FDiskName'))]",
+                        "id": "[resourceId('parameters('RGName')','Microsoft.Compute/disks', variables('FDiskName'))]",
                         "storageAccountType": "Standard_LRS"
                       }
                       }
@@ -212,7 +212,7 @@
                     }
                 ],
                 "networkSecurityGroup": {
-                    "id": "[resourceId('parameters('resourceGroupName')', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+                    "id": "[resourceId('parameters('RGName')', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
                 }
             }
         },

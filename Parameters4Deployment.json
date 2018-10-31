@@ -4,90 +4,70 @@
   "parameters": {
     "virtualMachineName": {
       "value": [
-        "TestWeb01",
-        "TestWeb02",
-        "TestWeb03"
+        "TestDNS01"
       ]
     },
     "virtualMachineSize": {
       "value": [
-        "Standard_B2s",
-        "Standard_B2s",
         "Standard_B2s"
       ]
     },
     "virtualNetworkName": {
       "value": [
-        "VMSVNet",
-        "VMSVNet",
-        "VMSVNet"
+        "VN-TRG01-LAB01"
       ]
     },
     "vmimagetype": {
       "value": [
-        "AzureStore",
-        "AzureStore",
         "AzureStore"
       ]
     },
     "osPublisher": {
       "value": [
-        "MicrosoftWindowsServer",
-        "MicrosoftWindowsServer",
         "MicrosoftWindowsServer"
       ]
     },
     "osOffer": {
       "value": [
-        "WindowsServer",
-        "WindowsServer",
         "WindowsServer"
       ]
     },
     "osSKU": {
       "value": [
-        "2016-Datacenter",
-        "2016-Datacenter",
         "2016-Datacenter"
+      ]
+    },
+    "osType": {
+      "value": [
+        "Windows"
       ]
     },
     "subnetName": {
       "value": [
-        "TRGP7Subnet-79",
-        "TRGP7Subnet-79",
-        "TRGP7Subnet-79"
+        "SN-AGW-ICL-ILB-VM"
+      ]
+    },
+    "RGName": {
+      "value": [
+        "RG-TRG01-LAB01-SCUS-ICL"
       ]
     },
     "adminUsername": {
       "value": "Sysadmin"
     },
     "domainPassword": {
-      "reference": {
-        "keyVault": {
-          "id": "/subscriptions/c379e217-ffc5-4b22-8b96-9fb6b29f46fa/resourceGroups/TRGVMsRG/providers/Microsoft.KeyVault/vaults/TRGVMsRGvault1"
-        },
-        "secretName": "domainPassword"
-      }
+      "value": "Staging@1234"
     },
     "localadminPassword": {
-      "reference": {
-        "keyVault": {
-          "id": "/subscriptions/c379e217-ffc5-4b22-8b96-9fb6b29f46fa/resourceGroups/TRGVMsRG/providers/Microsoft.KeyVault/vaults/TRGVMsRGvault1"
-        },
-        "secretName": "vmlocalPassword"
-      }
+      "value": "Staging@1234"
     },
     "P7Pair": {
       "value": [
-        "NA",
-        "NA",
         "NA"
       ]
     },
     "PublicIPRequired": {
       "value": [
-        "FALSE",
-        "FALSE",
         "FALSE"
       ]
     },
@@ -99,44 +79,34 @@
     },
     "PrivateIP": {
       "value": [
-        "10.79.1.7",
-        "10.79.1.8",
-        "10.79.1.9"
+        "10.79.1.7"
       ]
     },
     "isIM94Machine": {
       "value": [
-        "FALSE",
-        "FALSE",
         "FALSE"
       ]
     },
     "FDiskAccountType": {
       "value": [
-        "Standard_LRS",
-        "Standard_LRS",
         "Standard_LRS"
       ]
     },
     "FDiskSize": {
       "value": [
-        "NA",
-        "NA",
         "NA"
       ]
     },
     "FDiskCreateOption": {
       "value": [
-        "Empty",
-        "Empty",
         "Empty"
       ]
     },
     "storageAccountName": {
-      "value": "saoct62018"
+      "value": "sadeploytrg01lab01"
     },
     "diagnosticsStorageAccountName": {
-      "value": "vmsdiagsasep122018"
+      "value": "sadeploytrg01lab01"
     },
     "diagnosticsStorageAccountType": {
       "value": "Standard_LRS"
@@ -145,13 +115,11 @@
       "value": "Storage"
     },
     "diagnosticsStorageAccountId": {
-      "value": "/subscriptions/c379e217-ffc5-4b22-8b96-9fb6b29f46fa/resourceGroups/trgvmsrg/providers/Microsoft.Storage/storageAccounts/vmsdiagsasep122018"
+      "value": "/subscriptions/79af804c-1b4f-4d83-975f-5ebbeaf2c422/resourceGroups/RG-TRG01-LAB01-SCUS-ICL/providers/Microsoft.Storage/storageAccounts/sadeploytrg01lab01"
     },
     "networkSecurityGroupName": {
       "value": [
-        "VMsNSG",
-        "VMsNSG",
-        "VMsNSG"
+        "Test-VM-nsg"
       ]
     }
   }
