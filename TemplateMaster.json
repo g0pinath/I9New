@@ -79,7 +79,7 @@
 "publicIpAddressType": {"value": "[parameters('publicIpAddressType')]"},
 "publicIpAddressSku": {"value": "[parameters('publicIpAddressSku')]"},
 "PrivateIP" : {"value": "[parameters('PrivateIP')[copyIndex()]]"},
-"resourceGroupName" : {"value": "[parameters('resourceGroupName')[copyIndex()]]"},
+"RGName" : {"value": "[parameters('RGName')[copyIndex()]]"},
                 
 
 "isIM94Machine" : {"value": "[parameters('isIM94Machine')[copyIndex()]]"},
