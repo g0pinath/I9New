@@ -23,7 +23,7 @@
         "publicIpAddressSku":  {"type": "string"},
         "PrivateIP": {"type": "array"},
         "isIM94Machine": {"type": "array"},        
-        "FDiskAccountType": {"type": "array"}, 
+        
         "FDiskSize": {"type": "array"},
         "FDiskCreateOption": {"type": "array"}, 
         "storageAccountName": {"type": "string"},
@@ -84,7 +84,7 @@
                 
 
 "isIM94Machine" : {"value": "[parameters('isIM94Machine')[copyIndex()]]"},
-"FDiskAccountType" : {"value": "[parameters('FDiskAccountType')[copyIndex()]]"},
+
 "FDiskSizeStr" : {"value": "[parameters('FDiskSize')[copyIndex()]]"},
 "FDiskCreateOption" : {"value": "[parameters('FDiskCreateOption')[copyIndex()]]"},
               

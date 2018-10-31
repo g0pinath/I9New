@@ -26,7 +26,7 @@
         "publicIpAddressSku":  {"value": "Basic"},
         "PrivateIP": {"value": "False"},       
         "isIM94Machine": {"value": "False"},
-        "FDiskAccountType": {"value": "Standard_LRS"}, 
+        
         "FDiskSize": {"value": 80},
         "FDiskCreateOption": {"value": "Empty"}, 
         "storageAccountName": {"value": "sadeploytrg01lab01"},
