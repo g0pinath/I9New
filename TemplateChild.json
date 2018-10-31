@@ -33,7 +33,7 @@
         "networkSecurityGroupName": {"type": "string"}
             },
     "variables": {
-        "vnetId": "[resourceId('parameters('RGName')','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "vnetId": "[resourceId(parameters('RGName'),'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
         "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-Team')]",
         "IM94FDiskSource": "[concat(parameters('P7Pair'), '-FDisk')]",
