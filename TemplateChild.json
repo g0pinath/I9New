@@ -212,7 +212,7 @@
                     }
                 ],
                 "networkSecurityGroup": {
-                    "id": "[resourceId('parameters('RGName')', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+                    "id": "[resourceId(parameters('RGName'), 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
                 }
             }
         },
