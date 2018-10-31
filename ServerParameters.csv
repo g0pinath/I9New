@@ -1,4 +1,2 @@
 virtualMachineName,virtualMachineSize,virtualNetworkName,vmImageType,osPublisher,osOffer,osType,osSKU,osVersion,subnetName,ResourceGroupName,PublicIPRequired,PrivateIP,FDiskSize,FDiskCreateOption,FDiskAccountType,OSDiskType,isIM94Machine,P7Pair,networkSecurityGroupName
-TestWeb01,Standard_B2s,VMSVNet,AzureStore,MicrosoftWindowsServer,WindowsServer,Windows,2016-Datacenter,latest,TRGP7Subnet-79,IM94VMs,FALSE,10.79.1.7,NA,Empty,Standard_LRS,NA,FALSE,NA,VMsNSG
-TestWeb02,Standard_B2s,VMSVNet,AzureStore,MicrosoftWindowsServer,WindowsServer,Windows,2016-Datacenter,latest,TRGP7Subnet-79,IM94VMs,FALSE,10.79.1.8,NA,Empty,Standard_LRS,NA,FALSE,NA,VMsNSG
-TestWeb03,Standard_B2s,VMSVNet,AzureStore,MicrosoftWindowsServer,WindowsServer,Windows,2016-Datacenter,latest,TRGP7Subnet-79,IM94VMs,FALSE,10.79.1.9,NA,Empty,Standard_LRS,NA,FALSE,NA,VMsNSG
+TestDNS01,Standard_B2s,VN-TRG01-LAB01,AzureStore,MicrosoftWindowsServer,WindowsServer,Windows,2016-Datacenter,latest,SN-AGW-ICL-ILB-VM,RG-TRG01-LAB01-SCUS-ICL,FALSE,10.79.1.7,NA,Empty,Standard_LRS,NA,FALSE,NA,Test-VM-nsg

@@ -1,0 +1,272 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        
+        "virtualMachineName": {"type": "string"},
+        "virtualMachineSize": {"type": "string"},
+        "virtualNetworkName": {"type": "string"},
+        "vmimagetype": {"type": "string"},
+        "osPublisher": {"type": "string"},
+        "osOffer": {"type": "string"},
+        "osSKU": {"type": "string"},
+        
+        "subnetName": {"type": "string"},        
+        "adminUsername": {"type": "string"},
+        "localadminPassword": {"type": "string"},
+        "resourceGroupName": {"type": "string"},
+        "domainPassword": {"type": "string"},        
+        "P7Pair": {"type": "string"},
+        "PublicIPRequired":{"type": "string"},
+        "publicIpAddressType": {"type": "string"},
+        "publicIpAddressSku": {"type": "string"},
+        "PrivateIP": {"type": "string"},
+        "isIM94Machine":{"type": "string"},
+        "FDiskAccountType": {"type": "string"}, 
+        "FDiskSizestr": {"type": "string"},
+        "FDiskCreateOption": {"type": "string"}, 
+        "storageAccountName": {"type": "string"},
+        "diagnosticsStorageAccountName": {"type": "string"},
+        "diagnosticsStorageAccountId": {"type": "string"},
+        "diagnosticsStorageAccountType": {"type": "string"},
+        "diagnosticsStorageAccountKind": {"type": "string"},
+        "networkSecurityGroupName": {"type": "string"}
+            },
+    "variables": {
+        "vnetId": "[resourceId('parameters('resourceGroupName')','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+        "networkInterfaceName": "[concat(parameters('virtualMachineName'), '-Team')]",
+        "IM94FDiskSource": "[concat(parameters('P7Pair'), '-FDisk')]",
+        "IM94FDiskName": "[concat(parameters('virtualMachineName'), '-FDisk')]",
+        "FDiskName": "[concat(parameters('virtualMachineName'), '-FDisk')]",
+        "OSDiskName": "[concat(parameters('virtualMachineName'), '-OSDisk')]",
+        "PublicIPAddressName": "[concat(parameters('virtualMachineName'), '-PublicIP')]",
+        "IM94FDiskSourceURI": "[concat('/subscriptions/', '79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/','parameters('resourceGroupName')','/providers/Microsoft.Compute/disks/', variables('IM94FDiskSource'))]",
+        "PublicIPaddressID":{
+                               "id": "[resourceId('parameters('resourceGroupName')','Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"
+                            },
+        "azurestoreimageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+        "osType": "Windows",
+        "FDiskSize":"80",
+        "domaintojoin": "vmsrg.local",
+        "domainJoinUserName":"sysadmin@vmsrg.local",
+        "webserverimageid": {"id": "[concat('/subscriptions/','79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/','parameters('resourceGroupName')','/providers/Microsoft.Compute/images/WebSrvrImage-master')]"},
+        "FdiskProperties": [
+                          {
+                         "lun": "0",
+                         "name": "[variables('FDiskName')]",
+                        "createOption": "attach",
+                        "diskSizeGB": "[variables('FDiskSize')]",
+                        "managedDisk": {
+                        "id": "[resourceId('parameters('resourceGroupName')','Microsoft.Compute/disks', variables('FDiskName'))]",
+                        "storageAccountType": "Standard_LRS"
+                      }
+                      }
+                      ]
+    },
+    "resources": [
+        {
+            "name": "[parameters('virtualMachineName')]",
+            "tags": {
+                   "Realogy-ResourceName":"[parameters('virtualMachineName')]"
+             },
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2017-12-01",
+            "location": "eastus2",
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]",
+                "[concat('Microsoft.Compute/disks/', variables('IM94FDiskName'))]",
+                "[concat('Microsoft.Compute/disks/', variables('FDiskName'))]"
+
+            ],
+            
+             
+            "properties": {
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachineName')]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('localadminPassword')]",
+                    "windowsConfiguration": {
+                        "provisionVmAgent": "true"
+                    }
+                },
+                "hardwareProfile": {
+                    "vmSize": "[parameters('virtualMachineSize')]"
+                },
+                "storageProfile": {
+                "imagereference": "[if(equals(parameters('vmImageType'), 'AzureStore'), variables('azurestoreimagereference'), variables('webserverimageid'))]",
+                    
+                    "osDisk": {
+                        "name": "[variables('OSDiskName')]",
+                        "createOption": "fromImage",
+                        "managedDisk": {
+                        "storageAccountType": "standard_LRS"
+                        }
+                        },
+                        "dataDisks": "[if(equals(variables('FDiskSize'), 'NA'), json('null'), variables('FdiskProperties'))]"
+                    
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https://', parameters('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
+                    }
+                }
+                
+
+            },
+            "resources":[
+            {
+                  "apiVersion": "2015-06-15",
+                  "type": "extensions",
+                  "name": "[concat(parameters('virtualMachineName'),'-DJExtn')]",
+                  "location": "eastus2",
+                  "dependsOn": [
+                    "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+                  ],
+                  "properties": {
+                    "publisher": "Microsoft.Compute",
+                    "type": "JsonADDomainExtension",
+                    "typeHandlerVersion": "1.3",
+                    "autoUpgradeMinorVersion": true,
+                    "settings": {
+                      "Name": "[variables('domaintojoin')]",
+                      "User": "[variables('domainJoinUserName')]",
+                      "Restart": "true"
+                      
+                    },
+                    "protectedSettings": {
+                      "Password": "[parameters('domainPassword')]"
+                    }
+                  }
+               },
+               {
+                    "apiVersion": "2015-06-15",
+                    "type": "extensions",
+                    "name": "config-app",
+                    "location": "eastus2",
+                   "dependsOn": [
+                              "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+                        ],
+                    "tags": {
+        
+                    "Realogy-ResourceName": "[concat(parameters('virtualMachineName'),'-CusScr')]"
+                            },
+                    "properties": {
+                        "publisher": "Microsoft.Compute",
+                        "type": "CustomScriptExtension",
+                        "typeHandlerVersion": "1.9",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                        "fileUris": [
+                            "https://sasep122018.blob.core.windows.net/customscripts/postdeploymentscript.ps1"
+                                    ]
+                                    },
+                        "protectedSettings": {
+                        "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File postdeploymentscript.ps1"
+                        }
+                    }
+                }
+    
+               ]
+            
+        },
+       
+        {
+            "name": "[variables('networkInterfaceName')]",
+            "tags": {
+                            "Realogy-ResourceName":"[variables('networkInterfaceName')]"
+                          },
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2018-04-01",
+            "location": "eastus2",
+            "dependsOn": [
+                        
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            },
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "[parameters('PrivateIP')]",
+                            "publicIPAddress": "[if(equals(parameters('PublicIPRequired'), 'True'), variables('PublicIPaddressId'),  json('null'))]"
+                            
+                            
+                        }
+                    }
+                ],
+                "networkSecurityGroup": {
+                    "id": "[resourceId('parameters('resourceGroupName')', 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+                }
+            }
+        },
+        {
+             "condition": "[not(equals(variables('FDiskSize'), 'NA'))]",
+             "apiVersion": "2018-04-01",
+             "tags": {
+             "Realogy-ResourceName": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskName'), variables('FDiskname'))]"             
+             },
+             "type": "Microsoft.Compute/disks",           
+             "name": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskName'), variables('FDiskname'))]",
+             "location": "eastus2",
+             "Properties": {
+                        "osType": "[variables('osType')]",
+                        "creationData": {
+                            "createOption": "[if(equals(parameters('isIM94Machine'), 'True'), 'Copy', 'empty')]",
+                            
+                            "sourceResourceId": "[if(equals(parameters('isIM94Machine'), 'True'), variables('IM94FDiskSourceURI'), json('null'))]"
+
+                            },
+                            "diskSizeGB": "[variables('FDiskSize')]"
+                           },
+            "sku": {
+                "name": "[parameters('FDiskaccountType')]"
+            }
+             
+        },
+
+
+        {
+            "condition": "[equals(parameters('PublicIPRequired'), 'TRUE')]",
+            "name": "[variables('publicIpAddressName')]",
+            "tags": {
+                   "Realogy-ResourceName":"[variables('publicIpAddressName')]"
+             },
+            "type": "Microsoft.Network/publicIpAddresses",
+            "apiVersion": "2017-08-01",
+            "location": "eastus2",
+            "properties": {
+                "publicIpAllocationMethod": "[parameters('publicIpAddressType')]",
+                "dnssettings": {
+                 
+                "domainNameLabel": "[toLower(parameters('virtualMachineName'))]"
+                 }
+            },
+            "sku": {
+                "name": "[parameters('publicIpAddressSku')]"
+            }
+        }
+    ],
+    "outputs": {
+        "adminUsername": {
+            "type": "string",
+            "value": "[parameters('adminUsername')]"
+        }
+    }
+}
