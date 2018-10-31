@@ -43,7 +43,7 @@
         "PublicIPAddressName": "[concat(parameters('virtualMachineName'), '-PublicIP')]",
         "IM94FDiskSourceURI": "[concat('/subscriptions/', '79af804c-1b4f-4d83-975f-5ebbeaf2c422','/resourceGroups/','parameters('RGName')','/providers/Microsoft.Compute/disks/', variables('IM94FDiskSource'))]",
         "PublicIPaddressID":{
-                               "id": "[resourceId('parameters('RGName')','Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"
+                               "id": "[resourceId(parameters('RGName'),'Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"
                             },
         "azurestoreimageReference": {
                         "publisher": "MicrosoftWindowsServer",
@@ -63,7 +63,7 @@
                         "createOption": "attach",
                         "diskSizeGB": "[variables('FDiskSize')]",
                         "managedDisk": {
-                        "id": "[resourceId('parameters('RGName')','Microsoft.Compute/disks', variables('FDiskName'))]",
+                        "id": "[resourceId(parameters('RGName'),'Microsoft.Compute/disks', variables('FDiskName'))]",
                         "storageAccountType": "Standard_LRS"
                       }
                       }
